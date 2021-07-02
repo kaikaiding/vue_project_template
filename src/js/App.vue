@@ -1,6 +1,10 @@
 <template>
-    <div>
-        <Main/>
+    <div id="app">
+        <v-app id="inspire">
+            <v-container>
+                <Main/>
+            </v-container>
+        </v-app>
     </div>
 </template>
 

@@ -1,8 +1,5 @@
 *.jpg
 *.png
 node_modules/*
-index.html
-index.html.gz
-dist/*
 package.json.explain
 webpack.config.js.explain

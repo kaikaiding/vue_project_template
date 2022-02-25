@@ -291,17 +291,23 @@ export default {
         this.get_total_ml();
     },
 
-    methods: {     
+    methods: {   
+        // 取得所有的ml 
         get_total_ml () {
+            // 第一次取得的物資總量
             const first_count = this.get_first_count();
             let obj = { ...first_count, total_ml: first_count.ml };
+
+            // 只要全部不符合就不會跑了
             while (this.get_status(obj)) {
+                // 取得每次獎勵
                 obj = this.get_reword(obj);
             }
 
             this.total_ml = obj.total_ml;
         },
 
+        // 第一次購買 找出最划算的？
         get_first_count () {
             const count = this.money / 1;
             return {
@@ -312,13 +318,16 @@ export default {
         },
 
         get_status (obj) {
+            // 根據ml 1000兌換 瓶子3兌換 蓋子3兌換
             return Boolean(obj.ml > 999 || obj.bottle > 2 || obj.cap > 2);
         },
 
         get_reword (obj) {
+            // 計算獎勵的坪數+上次剩下的
             const count = this.reword.reduce((sum, item) => 
                 sum + Math.floor(obj[item.id] / item.x), obj.bottle % 3
             );
+            // 計算獎勵的ml+上次剩下的
             const ml = this.reword.reduce((sum, item) => 
                 sum + Math.floor(obj[item.id] / item.x) * item.item_ml, obj.ml % 1000
             );
@@ -327,7 +336,8 @@ export default {
                 ml: ml,
                 bottle: count,
                 cap: count,
-                total_ml: obj.total_ml + ml - (obj.ml % 1000)
+                total_ml: obj.total_ml + ml - (obj.ml % 1000) // 已兌換的加這次的兌換＋餘數必須減掉未能兌換的餘數
+
             };
         },
 

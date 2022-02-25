@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/js/app.vue"],"names":[],"mappings":";AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA","file":"script.bundle.css","sourcesContent":["\n[v-cloak] {\n    display: none;\n}\nbody {\n    font-family: Meiryo, Arial, Verdana, Sans-Serif, Microsoft JhengHei;\n    margin: auto auto;\n    -webkit-overflow-scrolling: touch;\n}\n"],"sourceRoot":""}
